@@ -1,5 +1,5 @@
 # Load dataset
-setwd("/Users/saul/Dropbox/Masters_Material/cinvestav/2Q/CienciaDeDatos/ejercicio2/");
+setwd("<your-path-here>");
 getwd();
 dataset = read.csv("dataset.csv", header=FALSE);
 

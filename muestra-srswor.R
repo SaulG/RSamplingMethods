@@ -62,3 +62,4 @@ boxplot(V1_1, xlab = "", ylab = "", main = "Grupo 1", col = "lightgreen")
 boxplot(V1_2, xlab = "", ylab = "", main = "Grupo 2", col = "lightgreen")
 boxplot(V1_3, xlab = "", ylab = "", main = "Grupo 3", col = "lightgreen")
 dev.off()
+

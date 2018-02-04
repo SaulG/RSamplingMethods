@@ -14,12 +14,12 @@ sample <- sample[keep_columns]
 # All data
 
 # Box plot
-pdf("boxplot_alldata_srswor.pdf")
+pdf("boxplot_alldata_strata.pdf")
 boxplot(sample, col = "lightblue")
 dev.off()
 
 # Histograms and density
-pdf("histdens_alldata_srswor.pdf")
+pdf("histdens_alldata_strata.pdf")
 par(mfrow=c(1, 4))
 colnames <- dimnames(sample)[[2]]
 for (i in 1:4) {
@@ -30,13 +30,13 @@ for (i in 1:4) {
 dev.off()
 
 # Correlation between variables
-pdf("correlations_alldata_srswor.pdf")
+pdf("correlations_alldata_strata.pdf")
 library(corrgram)
 corrgram(sample, lower.panel=panel.conf, upper.panel=panel.pts, diag.panel=panel.density, main="Correlations of Sample data set")
 dev.off()
 
 # By groups
-pdf("histdens_bygroups_srswor.pdf")
+pdf("histdens_bygroups_strata.pdf")
 par(mfrow=c(3,3))
 for (i in 1:3) {
   v_group <- sample[sample$V1==i,]
@@ -56,7 +56,7 @@ V1_2$V1 <- NULL
 V1_3 = sample[sample$V1==3,]
 V1_3$V1 <- NULL
 
-pdf("boxplot_bygroup_srswor.pdf")
+pdf("boxplot_bygroup_strata.pdf")
 par(mfrow=c(1, 3))
 boxplot(V1_1, xlab = "", ylab = "", main = "Grupo 1", col = "lightgreen")
 boxplot(V1_2, xlab = "", ylab = "", main = "Grupo 2", col = "lightgreen")

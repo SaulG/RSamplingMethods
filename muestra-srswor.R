@@ -14,12 +14,12 @@ sample <- sample[keep_columns]
 # All data
 
 # Box plot
-pdf("output/boxplot_alldata_srswor.pdf")
-boxplot(sample, col = "lightblue")
+pdf("output/boxplot_alldata_srswor.pdf",width=6,height=4,paper='special')
+boxplot(sample, col = "lightblue", main='Simple Random Sample W/R From Dataset', xlab='Variables', ylab='Values')
 dev.off()
 
 # Histograms and density
-pdf("output/histdens_alldata_srswor.pdf")
+pdf("output/histdens_alldata_srswor.pdf",width=12,height=4,paper='special')
 par(mfrow=c(1, 4))
 colnames <- dimnames(sample)[[2]]
 for (i in 1:4) {
@@ -30,23 +30,23 @@ for (i in 1:4) {
 dev.off()
 
 # Correlation between variables
-pdf("output/correlations_alldata_srswor.pdf")
+pdf("output/correlations_alldata_srswor.pdf",width=6,height=4,paper='special')
 library(corrgram)
 corrgram(sample, lower.panel=panel.conf, upper.panel=panel.pts, diag.panel=panel.density, main="Correlations of Sample data set")
 dev.off()
 
 # By groups
-pdf("output/histdens_bygroups_srswor.pdf")
-par(mfrow=c(3,3))
 for (i in 1:3) {
+  pdf(paste("output/histdens_bygroups_srswor_", i , ".pdf", sep=""), width=6,height=4,paper='special')
+  par(mfrow=c(1,3))
   v_group <- sample[sample$V1==i,]
   for (j in 1:3) {
     hist(v_group[,j], xlab='Values', main=paste(c("V", j), collapse = " "), prob=TRUE, col="grey")
     lines(density(v_group[,j]), col="blue", lwd=2)
     lines(density(v_group[,j], adjust=2), lty="dotted", col="darkgreen", lwd=2)
   }
+  dev.off()
 }
-dev.off()
 
 # By Group box plot
 V1_1 = sample[sample$V1==1,]
@@ -56,10 +56,9 @@ V1_2$V1 <- NULL
 V1_3 = sample[sample$V1==3,]
 V1_3$V1 <- NULL
 
-pdf("output/boxplot_bygroup_srswor.pdf")
+pdf("output/boxplot_bygroup_srswor.pdf",width=8,height=2,paper='special')
 par(mfrow=c(1, 3))
 boxplot(V1_1, xlab = "", ylab = "", main = "Grupo 1", col = "lightgreen")
 boxplot(V1_2, xlab = "", ylab = "", main = "Grupo 2", col = "lightgreen")
 boxplot(V1_3, xlab = "", ylab = "", main = "Grupo 3", col = "lightgreen")
 dev.off()
-
